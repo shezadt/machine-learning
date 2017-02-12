@@ -1,2 +1,4 @@
-# machine-learning
-Implement machine learning algorithms from scratch
+# Machine learning
+
+Author : Shezad T.          
+Date : 02/2017
