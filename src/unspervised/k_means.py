@@ -58,8 +58,8 @@ class_0 = X[np.where(clusters == 0)]
 class_1 = X[np.where(clusters == 1)]
 class_2 = X[np.where(clusters == 2)]
 
-plt.scatter(class_0[:,2], class_0[:,3], color = 'blue')
-plt.scatter(class_1[:,2], class_1[:,3], color = 'red')
-plt.scatter(class_2[:,2], class_2[:,3], color = 'green')
+plt.scatter(class_0[:,2], class_0[:,3], color='blue')
+plt.scatter(class_1[:,2], class_1[:,3], color='red')
+plt.scatter(class_2[:,2], class_2[:,3], color='green')
 plt.legend(('Class 0', 'Class 1', 'Class 2'), scatterpoints=1, loc=2)
 plt.show()
