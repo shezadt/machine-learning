@@ -43,12 +43,8 @@ for i in range(N_iter):
     # For each sample of the data
     for j, sample in enumerate(X):
         
-        # Define a distance vector
-        distances = np.zeros(K)
-        
         # Compute the distance between the sample and the centroids
-        for z, centroid in enumerate(centroids):
-            distances[z] = np.linalg.norm(sample - centroid)
+        distances = np.linalg.norm(centroids - sample, axis=1)
         
         # Assign the sample with the closest centroid
         clusters[j] = np.argmin(distances)
