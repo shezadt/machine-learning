@@ -32,13 +32,9 @@ y_pred = np.zeros(N_test)
 
 # Predict the label for each test sample
 for i, test_sample in enumerate(X_test):
-    
-    # Define the distance vector with the train set
-    distances = np.zeros(N_train)
-    
+  
     # Compute the distance with each train sample
-    for j, train_sample in enumerate(X_train):
-        distances[j] = np.linalg.norm(test_sample - train_sample)
+    distances = np.linalg.norm(X_train - test_sample, axis=1)
     
     # Sort the distances to get the nearest neighbors
     nn_indices = distances.argsort()
