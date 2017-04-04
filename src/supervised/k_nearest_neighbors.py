@@ -1,6 +1,8 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
+# Part I : Problematic
+
 # Load the libraries
 import numpy as np
 from sklearn import datasets
@@ -23,6 +25,8 @@ N_train = len(X_train)
 
 # Number of test samples
 N_test = len(X_test)
+
+# Part II : Algorithm
 
 # Define the number of neighbors
 K = 3
