@@ -1,6 +1,8 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
+# Part I : Problematic
+
 # Load the libraries
 import numpy as np
 
@@ -19,17 +21,19 @@ iris = datasets.load_iris()
 # Define the features
 X = iris.data
 
-# Define the number of clusters
-K = 3
-
-# Define the number of iterations
-N_iter = 100
-
 # Get the number of observations
 N_obs = len(X)
 
 # Shuffle the data
 X = X[np.random.permutation(N_obs)]
+
+# Part II : Algorithm
+
+# Define the number of clusters
+K = 3
+
+# Define the number of iterations
+N_iter = 100
 
 # Initialize the centroids as random samples from the data
 centroids = X[np.random.randint(N_obs, size=K)]
