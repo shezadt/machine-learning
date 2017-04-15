@@ -43,27 +43,23 @@ clusters = np.zeros(N_obs)
 
 # Loop on the number of iterations
 for i in range(N_iter):
-    
+
     # For each sample of the data
     for j, sample in enumerate(X):
-        
+
         # Compute the distance between the sample and the centroids
         distances = np.linalg.norm(centroids - sample, axis=1)
-        
+
         # Assign the sample with the closest centroid
         clusters[j] = np.argmin(distances)
-    
+
     # Update the centroids
     for z in range(K):
         centroids[z] = X[np.where(clusters == z)].mean(axis=0).round(1)
 
 # Visualize the clusters
-class_0 = X[np.where(clusters == 0)]
-class_1 = X[np.where(clusters == 1)]
-class_2 = X[np.where(clusters == 2)]
+fig, ax = plt.subplots()
 
-plt.scatter(class_0[:,2], class_0[:,3], color='blue')
-plt.scatter(class_1[:,2], class_1[:,3], color='red')
-plt.scatter(class_2[:,2], class_2[:,3], color='green')
-plt.legend(('Class 0', 'Class 1', 'Class 2'), scatterpoints=1, loc=2)
+ax.scatter(X[:,2], X[:,3], c=clusters)
+
 plt.show()
