@@ -18,6 +18,7 @@ y = iris.target
 
 # Define the train and the test set
 X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=0.8)
+
 # Number of training samples
 N_train = len(X_train)
 
