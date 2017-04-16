@@ -1,8 +1,20 @@
 # Machine learning
 
 Author : Shezad T.          
-Date : 02/2017
+Starting date : 02/2017
 
 ## Description
 
-Machine learning algorithms from scratch.
+I implement in Python some machine learning models and algorithms from scratch
+in order to better understand the underlying concepts.
+
+## Implementations
+
+### Supervised Learning
+
+- [K Nearest Neighbors](src/supervised/k_nearest_neighbors.py)
+
+### Unsupervised Learning
+
+- [K-Means](src/unsupervised/k_means.py)
+- [Principal Component Analysis](src/unsupervised/principal_component_analysis.py)
