@@ -5,7 +5,7 @@ Starting date : 02/2017
 
 ## Description
 
-I implement in Python some machine learning models and algorithms from scratch
+I implement some machine learning models and algorithms from scratch in python
 in order to better understand the underlying concepts.
 
 ## Implementations

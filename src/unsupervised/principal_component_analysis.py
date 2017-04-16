@@ -49,6 +49,6 @@ X_transformed = X.dot(eigen_vectors_selected)
 # Visualize the first two components
 fig, ax = plt.subplots()
 
-ax.scatter(X_transformed[:,0], X_transformed[:,1], c=y)
+ax.scatter(X_transformed[:, 0], X_transformed[:, 1], c=y)
 
 plt.show()

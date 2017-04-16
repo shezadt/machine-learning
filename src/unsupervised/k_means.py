@@ -5,11 +5,9 @@
 
 # Load the libraries
 import numpy as np
-
 from sklearn import datasets
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
-
 import matplotlib.pyplot as plt
 
 # Set the seed
@@ -60,6 +58,6 @@ for i in range(N_iter):
 # Visualize the clusters
 fig, ax = plt.subplots()
 
-ax.scatter(X[:,2], X[:,3], c=clusters)
+ax.scatter(X[:, 2], X[:, 3], c=clusters)
 
 plt.show()
