@@ -19,11 +19,8 @@ y = iris.target
 # Define the train and the test set
 X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=0.8)
 
-# Number of training samples
-N_train = len(X_train)
-
 # Number of test samples
-N_test = len(X_test)
+n_test = len(X_test)
 
 # Part II : Algorithm
 
@@ -31,7 +28,7 @@ N_test = len(X_test)
 K = 3
 
 # Define the prediction vector
-y_pred = np.zeros(N_test)
+y_pred = np.zeros(n_test)
 
 # Predict the label for each test sample
 for i, test_sample in enumerate(X_test):

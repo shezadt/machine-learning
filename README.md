@@ -12,6 +12,7 @@ in order to better understand the underlying concepts.
 
 ### Supervised Learning
 
+- [Gaussian Naive Bayes](src/supervised/gaussian_naive_bayes.py)
 - [K Nearest Neighbors](src/supervised/k_nearest_neighbors.py)
 
 ### Unsupervised Learning

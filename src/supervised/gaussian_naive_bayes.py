@@ -50,7 +50,6 @@ def compute_likelihood(means, vars, obs):
 
     return probability
 
-
 # Compute the parameters of the likelihood from the train set
 features_mean = np.zeros((n_labels, n_features))
 features_var = np.zeros((n_labels, n_features))
@@ -62,7 +61,6 @@ for i, label in enumerate(name_labels):
 
     # Compute the variance of each feature for each label
     features_var[i, :] = X_train[np.where(y_train == label)].var()
-
 
 # Compute the prior
 prior = np.bincount(y_train)
