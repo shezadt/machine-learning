@@ -5,10 +5,8 @@
 
 # Load the libraries
 import numpy as np
-
 from sklearn import datasets
 from sklearn import preprocessing
-
 import matplotlib.pyplot as plt
 
 # Load the MNIST data set
