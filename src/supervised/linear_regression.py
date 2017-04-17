@@ -40,7 +40,7 @@ mse = mean_squared_error(y_test, y_pred)
 mae = mean_absolute_error(y_test, y_pred)
 
 # Visualize the results
-plt.scatter(y_test, y_pred, color = 'blue')
+plt.scatter(y_test, y_pred, color='blue')
 plt.plot(y_test, y_test, color='red', linewidth=2)
 plt.title('Linear regression on the Boston data set')
 plt.xlabel('Real values')
