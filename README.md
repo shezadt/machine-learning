@@ -14,6 +14,7 @@ in order to better understand the underlying concepts.
 
 - [Gaussian Naive Bayes](src/supervised/gaussian_naive_bayes.py)
 - [K Nearest Neighbors](src/supervised/k_nearest_neighbors.py)
+- [Linear regression](src/supervised/linear_regression.py)
 
 ### Unsupervised Learning
 
