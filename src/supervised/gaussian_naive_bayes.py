@@ -34,7 +34,7 @@ n_test = len(X_test)
 # Define the gaussian probability distribution
 def gaussian_density(mean, var, x):
 
-    coeff = (1 / (np.sqrt((2.0 * np.pi) * var)))
+    coeff = (1 / (np.sqrt((2 * np.pi) * var)))
     exponent = np.exp(-((x - mean)**2 / (2 * var)))
 
     return coeff * exponent
