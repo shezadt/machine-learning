@@ -9,7 +9,6 @@ import numpy as np
 from sklearn import datasets
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
-import scipy.stats
 from sklearn.preprocessing import scale
 from scipy.stats import multivariate_normal as mn
 
