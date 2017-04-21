@@ -13,6 +13,7 @@ in order to better understand the underlying concepts.
 ### Supervised Learning
 
 - [Gaussian Naive Bayes](src/supervised/gaussian_naive_bayes.py)
+- [Linear Discriminant Analysis](src/supervised/linear_discriminant_analysis.py)
 - [Linear Regression](src/supervised/linear_regression.py)
 - [Nearest Neighbors](src/supervised/nearest_neighbors.py)
 - [Ridge Regression](src/supervised/ridge_regression.py)
