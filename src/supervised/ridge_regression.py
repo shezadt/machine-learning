@@ -23,7 +23,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 
 # Part II : Algorithm
 
-# Define the ridge regression coefficient
+# Define the learning rate
 ALPHA = 0.1
 
 # Add a column of ones a first column for bias weights

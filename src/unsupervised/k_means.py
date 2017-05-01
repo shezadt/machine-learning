@@ -31,7 +31,7 @@ X = X[np.random.permutation(N_obs)]
 K = 3
 
 # Define the number of iterations
-N_iter = 100
+N_ITER = 100
 
 # Initialize the centroids as random samples from the data
 centroids = X[np.random.randint(N_obs, size=K)]
@@ -40,7 +40,7 @@ centroids = X[np.random.randint(N_obs, size=K)]
 clusters = np.zeros(N_obs)
 
 # Loop on the number of iterations
-for i in range(N_iter):
+for i in range(N_ITER):
 
     # For each sample of the data
     for j, sample in enumerate(X):

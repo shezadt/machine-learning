@@ -28,10 +28,10 @@ X_train_features = np.insert(X_train, 0, 1, axis=1)
 
 # Compute the weights from the train set
 cov_X = X_train_features.T.dot(X_train_features)
-w = np.linalg.inv(cov_X).dot(X_train_features.T).dot(y_train)
+weights = np.linalg.inv(cov_X).dot(X_train_features.T).dot(y_train)
 
 # Predict on the test set
-y_pred = np.insert(X_test, 0, 1, axis=1).dot(w)
+y_pred = np.insert(X_test, 0, 1, axis=1).dot(weights)
 
 # Compute the mean squared error
 mse = mean_squared_error(y_test, y_pred)

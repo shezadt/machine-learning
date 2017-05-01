@@ -15,6 +15,7 @@ in order to better understand the underlying concepts.
 - [Gaussian Naive Bayes](src/supervised/gaussian_naive_bayes.py)
 - [Linear Discriminant Analysis](src/supervised/linear_discriminant_analysis.py)
 - [Linear Regression](src/supervised/linear_regression.py)
+- [Logistic Regression](src/supervised/logistic_regression.py)
 - [Nearest Neighbors](src/supervised/nearest_neighbors.py)
 - [Quadratic Discriminant Analysis](src/supervised/quadratic_discriminant_analysis.py)
 - [Ridge Regression](src/supervised/ridge_regression.py)
