@@ -73,7 +73,7 @@ for i, test_sample in enumerate(X_test):
     for j in range(n_labels):
 
         # Compute the likelihood
-        likelihood = multi_normal(mean=mean_labels[j], cov=cov).pdf(test_sample)
+        likelihood = multi_normal(mean_labels[j], cov).pdf(test_sample)
 
         # Compute the numerator
         numerator[j] = prior[j] * likelihood
