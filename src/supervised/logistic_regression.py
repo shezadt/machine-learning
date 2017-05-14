@@ -50,7 +50,7 @@ NB_ITER = 1000
 # Add a column of ones a first column for bias weights
 X_train_features = np.insert(X_train, 0, 1, axis=1)
 
-# Define the weight vector
+# Define the weight vector (+ 1 for the bias weights)
 weights = np.zeros(n_features + 1)
 
 # Loop on the number of iterations
