@@ -12,6 +12,8 @@ from sklearn.metrics import accuracy_score
 class NearestNeighbors():
 
     def __init__(self, n_neighbors=1):
+
+        # Number of neighbors
         self.n_neighbors = n_neighbors
 
     def predict(self, X_train, X_test, y_train):
