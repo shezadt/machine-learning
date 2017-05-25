@@ -22,7 +22,7 @@ class LinearDiscriminantAnalysis():
         # Number of labels
         self.n_labels = None
 
-        # Mean by labels
+        # Mean by label
         self.mean_labels = None
 
         # Covariance matrix
