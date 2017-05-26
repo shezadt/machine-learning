@@ -14,23 +14,23 @@ in order to better understand the underlying concepts.
 
 #### Classification
 
-- [Gaussian Naive Bayes](src/supervised/gaussian_naive_bayes.py)
-- [Linear Discriminant Analysis](src/supervised/linear_discriminant_analysis.py)
-- [Logistic Regression](src/supervised/logistic_regression.py)
-- [Nearest Neighbors](src/supervised/nearest_neighbors.py)
-- [Quadratic Discriminant Analysis](src/supervised/quadratic_discriminant_analysis.py)
+- [Gaussian Naive Bayes](src/supervised/classification/gaussian_naive_bayes.py)
+- [Linear Discriminant Analysis](src/supervised/classification/linear_discriminant_analysis.py)
+- [Logistic Regression](src/supervised/classification/logistic_regression.py)
+- [Nearest Neighbors](src/supervised/classification/nearest_neighbors.py)
+- [Quadratic Discriminant Analysis](src/supervised/classification/quadratic_discriminant_analysis.py)
 
 #### Regression
 
-- [Linear Regression](src/supervised/linear_regression.py)
-- [Ridge Regression](src/supervised/ridge_regression.py)
+- [Linear Regression](src/supervised/regression/linear_regression.py)
+- [Ridge Regression](src/supervised/regression/ridge_regression.py)
 
 ### Unsupervised Learning
 
 #### Clustering
 
-- [K-Means](src/unsupervised/k_means.py)
+- [K-Means](src/unsupervised/clustering/k_means.py)
 
 #### Dimension reduction
 
-- [Principal Component Analysis](src/unsupervised/principal_component_analysis.py)
+- [Principal Component Analysis](src/unsupervised/dimension_reduction/principal_component_analysis.py)
