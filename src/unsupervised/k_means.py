@@ -1,59 +1,66 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
-# Part I : Problematic
-
 # Load the libraries
 import numpy as np
 from sklearn import datasets
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
 import matplotlib.pyplot as plt
 
-# Set the seed
-np.random.seed(1)
+# Part I : Algorithm
+
+class KMeans():
+
+    def __init__(self, n_clusters=8, max_iter=300):
+
+        # The number of clusters
+        self.n_clusters = n_clusters
+
+        # The number of iterations
+        self.max_iter = max_iter
+
+    def fit_predict(self, X_train):
+
+        # Get the number of observations
+        N_obs = len(X_train)
+
+        # Initialize the centroids as random samples from the data
+        centroids = X_train[np.random.randint(N_obs, size=self.n_clusters)]
+
+        # Define the clusters vector
+        clusters = np.zeros(N_obs)
+
+        # Loop on the number of iterations
+        for i in range(self.max_iter):
+
+            # For each sample of the data
+            for j, sample in enumerate(X_train):
+
+                # Compute the distance between the sample and the centroids
+                distances = np.linalg.norm(centroids - sample, axis=1)
+
+                # Assign the sample with the closest centroid
+                clusters[j] = np.argmin(distances)
+
+            # Update the centroids
+            for z in range(self.n_clusters):
+                centroids[z] = X_train[np.where(clusters == z)].mean(axis=0).round(1)
+
+        return clusters
+
+# Part II : An example
 
 # Load the iris data set
 iris = datasets.load_iris()
 
-# Define the features
+# Define the dataset
 X = iris.data
 
-# Get the number of observations
-N_obs = len(X)
-
 # Shuffle the data
-X = X[np.random.permutation(N_obs)]
+X = X[np.random.permutation(len(X))]
 
-# Part II : Algorithm
-
-# Define the number of clusters
-K = 3
-
-# Define the number of iterations
-N_ITER = 100
-
-# Initialize the centroids as random samples from the data
-centroids = X[np.random.randint(N_obs, size=K)]
-
-# Define the clusters vector
-clusters = np.zeros(N_obs)
-
-# Loop on the number of iterations
-for i in range(N_ITER):
-
-    # For each sample of the data
-    for j, sample in enumerate(X):
-
-        # Compute the distance between the sample and the centroids
-        distances = np.linalg.norm(centroids - sample, axis=1)
-
-        # Assign the sample with the closest centroid
-        clusters[j] = np.argmin(distances)
-
-    # Update the centroids
-    for z in range(K):
-        centroids[z] = X[np.where(clusters == z)].mean(axis=0).round(1)
+# Machine learning algorithm
+kmeans = KMeans(n_clusters=3, max_iter=100)
+clusters = kmeans.fit_predict(X)
 
 # Visualize the clusters
 fig, ax = plt.subplots()

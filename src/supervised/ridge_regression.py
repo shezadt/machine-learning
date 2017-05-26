@@ -15,7 +15,7 @@ class RidgeRegression():
 
     def __init__(self, alpha=0.1):
 
-        # The learning rates
+        # The learning rate
         self.alpha = alpha
 
         # The weights of the ridge regression
