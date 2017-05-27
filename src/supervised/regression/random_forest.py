@@ -211,6 +211,69 @@ class DecisionTreeRegressor():
 
         return y_pred
 
+class RandomForest():
+
+    def __init__(self, n_estimators=100,  max_depth=float('inf'),
+                 min_samples_split=2, min_impurity_split=1e-7):
+
+        # The number of trees
+        self.n_estimators = n_estimators
+
+        # The maximum depth of the tree
+        self.max_depth = max_depth
+
+        # The minimum of samples required to make a split
+        self.min_samples_split = min_samples_split
+
+        # The minimum of impurity required to make a split
+        self.min_impurity_split = min_impurity_split
+
+        # Initialize the decision trees
+        self.trees = []
+
+        for i in range(n_estimators):
+            self.trees.append(
+                       DecisionTreeRegressor(max_depth=self.max_depth,
+                                             min_samples_split=self.min_samples_split,
+                                             min_impurity_split=self.min_impurity_split)
+                                             )
+    def fit(self, X_train, y_tain):
+
+        # Get the dimension of the space
+        n_samples, n_features = X_train.shape
+
+        print('Training %s decision trees !' % (self.n_estimators))
+
+        # Learn for each tree to predict
+        for i in range(self.n_estimators):
+
+            # Samples bagging
+            idx = np.random.choice(n_samples, size=n_samples, replace=True)
+
+            X_train_tree = X_train[idx, :]
+            y_train_tree = y_train[idx]
+
+            self.trees[i].fit(X_train_tree, y_train_tree)
+
+            print('Tree number %s trained ! ' %(i))
+
+    def predict(self, X_test):
+
+        # Number of samples of the test set
+        n_test_samples = len(X_test)
+
+        # Matrix that will gather the prediction for each tree
+        y_pred_all_trees = np.zeros((n_test_samples, self.n_estimators))
+
+        for i in range(self.n_estimators):
+
+            y_pred_all_trees[:, i] = self.trees[i].predict(X_test)
+
+        # Get the mean of predictions for each test sample and for all estimators
+        y_pred = y_pred_all_trees.mean(axis=1)
+
+        return y_pred
+
 # Part II : An example
 
 # Load the Boston data set
@@ -226,18 +289,26 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 # Machine learning algorithm
 reg = DecisionTreeRegressor()
 reg.fit(X_train, y_train)
-y_pred = reg.predict(X_test)
+y_pred_dt = reg.predict(X_test)
+
+reg = RandomForest(n_estimators=20)
+reg.fit(X_train, y_train)
+y_pred_rf = reg.predict(X_test)
 
 # Compute the mean squared error
-mse = mean_squared_error(y_test, y_pred)
+mse_dt = mean_squared_error(y_test, y_pred_dt)
+mse_rf = mean_squared_error(y_test, y_pred_rf)
 
 # Compute the mean absolute error
-mae = mean_absolute_error(y_test, y_pred)
+mae_dt = mean_absolute_error(y_test, y_pred_dt)
+mae_rf = mean_absolute_error(y_test, y_pred_rf)
 
 # Visualize the results
-plt.scatter(y_test, y_pred, color='blue')
+plt.scatter(y_test, y_pred_dt, color='blue', label='Decision Tree')
+plt.scatter(y_test, y_pred_rf, color='green', label='Random Forest')
 plt.plot(y_test, y_test, color='red', linewidth=2)
-plt.title('Decision tree on the Boston data set')
+plt.title('Decision tree & Random Forest on the Boston data set')
 plt.xlabel('Real values')
 plt.ylabel('Prediction')
+plt.legend()
 plt.show()
