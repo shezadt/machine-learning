@@ -22,6 +22,7 @@ in order to better understand the underlying concepts.
 
 #### Regression
 
+- [Decision Tree](src/supervised/regression/decision_tree.py)
 - [Linear Regression](src/supervised/regression/linear_regression.py)
 - [Ridge Regression](src/supervised/regression/ridge_regression.py)
 
