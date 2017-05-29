@@ -33,7 +33,7 @@ class DecisionNode():
         # The right subtree
         self.right_branch = right_branch
 
-# The algorithm
+# Define a class to model a regression tree
 class DecisionTreeRegressor():
 
     def __init__(self, max_depth=float('inf'), min_samples_split=2,
@@ -186,7 +186,6 @@ class DecisionTreeRegressor():
         if tree.value is not None:
             return tree.value
 
-        # Choose the feature that we will test
         feature_value = sample[tree.feature_index]
 
         # Determine if we will follow left or right branch
@@ -201,17 +200,24 @@ class DecisionTreeRegressor():
     # Predict for the test set
     def predict(self, X_test):
 
+         # Add a dimension to the target if needed
+        if len(np.shape(X_test)) == 1:
+            X = np.expand_dims(X_test, axis=1)
+        else:
+            X = X_test
+
         # Define the prediction vector
-        y_pred = np.zeros(len(X_test))
+        y_pred = np.zeros(len(X))
 
         # Predict for each test sample
-        for i, test_sample in enumerate(X_test):
+        for i, test_sample in enumerate(X):
 
             y_pred[i] = self.predict_value(test_sample)
 
         return y_pred
 
-class RandomForest():
+# Define the random forest regression
+class RandomForestRegressor():
 
     def __init__(self, n_estimators=100,  max_depth=float('inf'),
                  min_samples_split=2, min_impurity_split=1e-7):
@@ -237,12 +243,18 @@ class RandomForest():
                                              min_samples_split=self.min_samples_split,
                                              min_impurity_split=self.min_impurity_split)
                                              )
-    def fit(self, X_train, y_tain):
+    def fit(self, X_train, y_train):
 
         # Get the dimension of the space
         n_samples, n_features = X_train.shape
 
         print('Training %s decision trees !' % (self.n_estimators))
+
+        # Add a dimension to the target if needed
+        if len(np.shape(y_train)) == 1:
+            y = np.expand_dims(y_train, axis=1)
+        else:
+            y = y_train
 
         # Learn for each tree to predict
         for i in range(self.n_estimators):
@@ -251,7 +263,7 @@ class RandomForest():
             idx = np.random.choice(n_samples, size=n_samples, replace=True)
 
             X_train_tree = X_train[idx, :]
-            y_train_tree = y_train[idx]
+            y_train_tree = y[idx, :]
 
             self.trees[i].fit(X_train_tree, y_train_tree)
 
@@ -259,15 +271,21 @@ class RandomForest():
 
     def predict(self, X_test):
 
+         # Add a dimension to the target if needed
+        if len(np.shape(X_test)) == 1:
+            X = np.expand_dims(X_test, axis=0)
+        else:
+            X = X_test
+
         # Number of samples of the test set
-        n_test_samples = len(X_test)
+        n_test_samples = len(X)
 
         # Matrix that will gather the prediction for each tree
         y_pred_all_trees = np.zeros((n_test_samples, self.n_estimators))
 
         for i in range(self.n_estimators):
 
-            y_pred_all_trees[:, i] = self.trees[i].predict(X_test)
+            y_pred_all_trees[:, i] = self.trees[i].predict(X)
 
         # Get the mean of predictions for each test sample and for all estimators
         y_pred = y_pred_all_trees.mean(axis=1)
@@ -291,7 +309,7 @@ reg = DecisionTreeRegressor()
 reg.fit(X_train, y_train)
 y_pred_dt = reg.predict(X_test)
 
-reg = RandomForest(n_estimators=20)
+reg = RandomForestRegressor(n_estimators=20)
 reg.fit(X_train, y_train)
 y_pred_rf = reg.predict(X_test)
 
