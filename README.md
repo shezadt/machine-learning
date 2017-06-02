@@ -24,6 +24,7 @@ in order to better understand the underlying concepts.
 
 - [Decision Tree](src/supervised/regression/decision_tree.py)
 - [Linear Regression](src/supervised/regression/linear_regression.py)
+- [Nearest Neighbors](src/supervised/regression/nearest_neighbors.py)
 - [Random Forest](src/supervised/regression/random_forest.py)
 - [Ridge Regression](src/supervised/regression/ridge_regression.py)
 

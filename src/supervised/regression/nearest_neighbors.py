@@ -5,7 +5,9 @@
 import numpy as np
 from sklearn import datasets
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import mean_squared_error
+from sklearn.metrics import mean_absolute_error
+import matplotlib.pyplot as plt
 
 # Part I : Algorithm
 
@@ -35,25 +37,37 @@ class NearestNeighbors():
             nn_y = nn_label[:self.n_neighbors]
 
             # Do a majority vote to classify
-            y_pred[i] = np.argmax(np.bincount(nn_y))
+            y_pred[i] = nn_y.mean()
 
         return y_pred
 
 # Part II : An example
 
-# Load the iris data set
-iris = datasets.load_iris()
+# Load the Boston data set
+boston = datasets.load_boston()
 
 # Define the features and the target
-X = iris.data
-y = iris.target
+X = boston.data
+y = boston.target
 
 # Define the train and the test set
-X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=0.8)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 
 # Machine learning algorithm
-clf = NearestNeighbors(n_neighbors=3)
-y_pred = clf.fit_predict(X_train, y_train, X_test)
+n_neighbors = 3
+reg = NearestNeighbors(n_neighbors=n_neighbors)
+y_pred = reg.fit_predict(X_train, y_train, X_test)
 
-# Compute the accuracy score
-accuracy = accuracy_score(y_test, y_pred)
+# Compute the mean squared error
+mse = mean_squared_error(y_test, y_pred)
+
+# Compute the mean absolute error
+mae = mean_absolute_error(y_test, y_pred)
+
+# Visualize the results
+plt.scatter(y_test, y_pred, color='blue')
+plt.plot(y_test, y_test, color='red', linewidth=2)
+plt.title('Nearest neighbors with K = %d' % n_neighbors)
+plt.xlabel('Real values')
+plt.ylabel('Prediction')
+plt.show()
