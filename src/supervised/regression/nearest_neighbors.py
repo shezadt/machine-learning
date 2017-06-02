@@ -36,7 +36,7 @@ class NearestNeighbors():
             # Select the first n_neighbors nearest neighbors
             nn_y = nn_label[:self.n_neighbors]
 
-            # Do a majority vote to classify
+            # Compute the mean of the selected nearest neighbors
             y_pred[i] = nn_y.mean()
 
         return y_pred
