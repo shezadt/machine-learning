@@ -8,6 +8,8 @@ Starting date : 02/2017
 I implement some machine learning models and algorithms from scratch in python
 in order to better understand the underlying concepts.
 
+Inspired by the work of Erik Linder-Norén : https://github.com/eriklindernoren/ML-From-Scratch
+
 ## Implementations
 
 ### Supervised Learning
